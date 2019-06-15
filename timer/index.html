@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simply timer</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="root">
+        <div class="setup">
+            <h1>Welcome! Configure your timer</h1>
+            <h3><i class="far fa-clock fa-10x"></i></h3>
+            <form>
+                <div class=inputs>
+                    <input type="number" id=hours min="0" max="999" value="0">
+                    <input type="number" id=minutes min="0" max="59" value="10">
+                    <input type="number" id=seconds min="0" max="59" value="0">
+                </div>
+                <div class="labels">
+                    <label for="hours">hours</label>
+                    <label for="minutes">minutes</label>
+                    <label for="seconds">seconds</label>
+                </div>
+                <div class="submit">
+                    <button id="submitbutton" type="submit" autofocus>Start</button>
+                </div>
+                <p>after start tap clock to pause</p>
+            </form>
+        </div>
+        <div class="timer">
+            <h1>Time is running!</h1>
+            <h3><i class="far fa-clock fa-10x"></i></h3>
+
+            <div class="timeleft">
+
+            </div>
+        </div>
+        <div class="finished">
+            <h1>Finished!</h1>
+            <h3>click here to reload</h3>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/95ca823ab3.js"></script>
+    <script src="timer.js"></script>
+</body>
+
+</html>
