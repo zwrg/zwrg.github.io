@@ -29,8 +29,7 @@ const changePauseStatus = () => {
 }
 
 document.querySelector(".timer h3").addEventListener("click", () => {
-    clearInterval(id);
-    hidRest("finished");
+    changePauseStatus();
 })
 
 document.querySelector(".setup h3").addEventListener("click", () => {
