@@ -46,7 +46,8 @@
     </div>
     <script>
         (() => {
-            const getParameter = location.search.replace('?', '');
+            let getParameter = location.search.replace('?', '');
+            getParameter = getParameter.replace(/&fbclid.*/, '');
 
             let result = '';
             for (let i = 0; i < getParameter.length; i += 3) {
@@ -70,3 +71,5 @@
 </body>
 
 </html>
+
+x63x68x75x6agx43x69gx77g322x65x62
