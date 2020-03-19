@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            /* width: 100vh; */
+            height: 100vh;
+            background-color: pink;
+
+        }
+
+        #printable-text {
+            color: orangered;
+            font-size: 20em;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .blink {
+            background-color: greenyellow;
+        }
+
+        .blink h1 {
+            color: indigo;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- <a href="./timer/index.html">go to timer</a> -->
+
+        <div id="printable-text">
+        </div>
+    </div>
+    <script>
+        (() => {
+            const getParameter = location.search.replace('?', '');
+
+            let result = '';
+            for (let i = 0; i < getParameter.length; i += 3) {
+                if (getParameter[i] === 'g') {
+                    i = i - 2;
+                    result += ' ';
+                    continue;
+                }
+                result += `&#${getParameter[i]}${getParameter[i + 1]}${getParameter[i + 2]};`
+                console.log('result[i] :', result);
+            }
+
+            document.querySelector('#printable-text').innerHTML = result;
+
+            setInterval(() => {
+                const mainDiv = document.querySelector('.main');
+                mainDiv.classList.toggle("blink");
+            }, 50);
+        })();
+    </script>
+</body>
+
+</html>
