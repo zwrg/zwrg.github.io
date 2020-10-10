@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Zaawansowane Techniki Kryptografii i Kryptoanalizy</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+					'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+				font-size: 14px;
+				margin: 1em 2em;
+			}
+			hr {
+				border: none;
+				border-top: 2px solid black;
+				margin-bottom: 1em;
+			}
+			h1 {
+				margin-left: 10px;
+			}
+			h2 {
+				margin-left: 20px;
+			}
+			h3 {
+				margin-left: 30px;
+			}
+			.content {
+				margin: 30px 30px;
+			}
+			label {
+				display: block;
+				margin-right: 14px;
+				padding: 5px;
+			}
+			.main {
+				margin: 0 auto;
+				max-width: 720px;
+			}
+			.row {
+				justify-content: center;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				margin: 5px auto;
+			}
+			input,
+			select {
+				padding: 5px;
+			}
+			button {
+				padding: 3px 8px;
+			}
+			pre {
+				padding: 10px;
+				font-family: 'Source Code Pro', monospace;
+			}
+			#ex01results {
+				min-height: 120px;
+			}
+			#ex02results {
+				min-height: 215px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<h1>Lecture 01 - number conversion, extended euclid</h1>
+			<hr />
+			<h2>Number conversion</h2>
+			<div class="content">
+				<div class="row">
+					<label for="ex01number">enter number: </label>
+					<input id="ex01number" type="text" />
+				</div>
+
+				<div class="row">
+					<label for="ex01system">convert from system: </label>
+					<select id="ex01system">
+						<option>2</option>
+						<option>3</option>
+						<option>8</option>
+						<option>10</option>
+						<option>16</option>
+					</select>
+				</div>
+				<div class="">
+					<button onclick="ex01()">Convert</button>
+					<button onclick="clearex01()">Clear</button>
+				</div>
+				<pre id="ex01results"></pre>
+			</div>
+			<h2>GCD - Euclid' extended</h2>
+			<h3>ax + by = r = ux + vy = nwd(x,y)</h3>
+			<div class="content">
+				<div class="row">
+					<label for="ex02euclid_a">enter a: </label>
+					<input id="ex02euclid_a" type="text" />
+				</div>
+
+				<div class="row">
+					<label for="ex02euclid_b">enter b: </label>
+					<input id="ex02euclid_b" type="text" />
+				</div>
+				<div class="">
+					<button onclick="ex02()">Calculate</button>
+					<button onclick="clearex02()">Clear</button>
+				</div>
+				<pre id="ex02results"></pre>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
