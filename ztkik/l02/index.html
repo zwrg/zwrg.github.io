@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Zaawansowane Techniki Kryptografii i Kryptoanalizy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            margin: 1em 2em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid black;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 30px;
+        }
+
+        .content {
+            margin: 30px 30px;
+        }
+
+        label {
+            display: block;
+            margin-right: 14px;
+            padding: 5px;
+        }
+
+        .main {
+            margin: 0 auto;
+            max-width: 720px;
+        }
+
+        .row {
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 5px auto;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        button {
+            padding: 3px 8px;
+        }
+
+        pre {
+            padding: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 20px;
+        }
+
+        #ex01results, #ex02results, #ex03results {
+            min-height: 145px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 75%;
+            font-size: 20px;
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 1px;
+        }
+
+        td {
+            padding: 2px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <h1>Lecture 02 - basic encoding and decoding</h1>
+    <hr/>
+    <h2>Substitution cipher</h2>
+    <div class="content">
+        <div class="row">
+            <div id="ex01table">
+
+            </div>
+        </div>
+        <div class="row">
+            <label for="ex01text">enter text: </label>
+            <input id="ex01text" type="text"/>
+        </div>
+        <div class="">
+            <button onclick="operation(true,1)">Encode</button>
+            <button onclick="operation(false,1)">Decode</button>
+            <button onclick="clearResults(1)">Clear</button>
+        </div>
+        <pre id="ex01results"></pre>
+    </div>
+    <h2>Substitution cipher - part two - modulo</h2>
+    <h3>c = am + b(mod l)</h3>
+    <div class="content">
+        <div class="row">
+            <div id="ex02table">
+
+            </div>
+        </div>
+        <div class="row">
+            <label for="ex02a">enter a: </label>
+            <input id="ex02a" type="text" value="21"/>
+        </div>
+        <div class="row">
+            <label for="ex02b">enter b: </label>
+            <input id="ex02b" type="text" value="3"/>
+        </div>
+        <div class="row">
+            <label for="ex02l">enter l: </label>
+            <input id="ex02l" type="text" value="32"/>
+        </div>
+        <div class="row">
+            <label for="ex02text">enter text: </label>
+            <input id="ex02text" type="text"/>
+        </div>
+        <div class="">
+            <button onclick="operation(true,2)">Encode</button>
+            <button onclick="operation(false,2)">Decode</button>
+            <button onclick="clearResults(2)">Clear</button>
+        </div>
+        <pre id="ex02results"></pre>
+    </div>
+    <h2>Substitution cipher - part three - block</h2>
+    <h3>c = A * m + b (mod l)</h3>
+    <h3>A = [[a,b],[c,d]]</h3>
+    <h3>b = [e,f]</h3>
+    <div class="content">
+        <div class="row">
+            <div id="ex03table">
+
+            </div>
+        </div>
+        <div class="row">
+            <label for="ex03a">enter a: </label>
+            <input id="ex03a" type="text" value="2"/>
+<!--            <input id="ex03a" type="text" value="1"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03b">enter b: </label>
+            <input id="ex03b" type="text" value="0"/>
+<!--            <input id="ex03b" type="text" value="3"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03c">enter c: </label>
+            <input id="ex03c" type="text" value="5"/>
+<!--            <input id="ex03c" type="text" value="0"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03d">enter d: </label>
+            <input id="ex03d" type="text" value="1"/>
+<!--            <input id="ex03d" type="text" value="3"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03e">enter e: </label>
+            <input id="ex03e" type="text" value="1"/>
+<!--            <input id="ex03e" type="text" value="3"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03f">enter f: </label>
+            <input id="ex03f" type="text" value="4"/>
+<!--            <input id="ex03f" type="text" value="5"/>-->
+        </div>
+        <div class="row">
+            <label for="ex03l">enter l: </label>
+            <input id="ex03l" type="text" value="32"/>
+        </div>
+
+        <div class="row">
+            <label for="ex03text">enter text: </label>
+            <input id="ex03text" type="text"/>
+        </div>
+        <div class="">
+            <button onclick="operation(true,3)">Encode</button>
+            <button onclick="operation(false,3)">Decode</button>
+            <button onclick="clearResults(3)">Clear</button>
+        </div>
+        <pre id="ex03results"></pre>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"
+        integrity="sha512-6SHRAV8GhJ+3WvGPKQNsBpLj7J9QF9JFwH7nPSRLtH/OqFrlXRd54Z+QDgw7xj1f7dV8c50sKhZYr/xGPlMoiw=="
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
