@@ -443,6 +443,11 @@ LUMBLWNHLA
 NHWĄJFIĄŻĘ`;
             break;
         case 3:
+            document.querySelector(`#ex0${exercise}results`).textContent = `ZAKOPANE
+MRĄGOWOJAD
+
+COUFŚI
+GRŚYDY`;
             break;
     }
 }
