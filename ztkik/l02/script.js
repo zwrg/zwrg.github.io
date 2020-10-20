@@ -457,7 +457,6 @@ updateTable(1);
 initialPre(1);
 updateTable(2);
 initialPre(2);
-updateTable(3);
 initialPre(3);
 
 /*
