@@ -24,7 +24,6 @@ const toDec = (numberString, system) => {
         }
     }
     return value;
-    f
 };
 
 const fromDec = (number, toSystem) => {

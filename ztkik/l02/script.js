@@ -282,24 +282,13 @@ function calculate_decoded_vector(letterValueVector) {
 
     const matrix = [[a, b], [c, d]];
 
-    function getInverseModulo(number, modulo) {
-        let i = 0;
-        while (i < 100000) {
-            if ((number * i) % modulo === 1) return i;
-            i++;
-        }
-        return undefined;
-    }
-
     const inverseMatrix = math.inv(matrix);
     const modInverseMatrix = math.mod(inverseMatrix, l);
     const subVector = [e, f];
 
     let resultVector = subtractVectors(letterValueVector, subVector);
-    resultVector = math.mod(resultVector, l);
-    resultVector = multiplyMatrixVector(modInverseMatrix, resultVector);
-    resultVector = math.mod(resultVector, l);
-    resultVector = convertNumberVectorToLetterVector(resultVector);
+    resultVector = multiplyMatrixVector(modInverseMatrix, math.mod(resultVector, l));
+    resultVector = convertNumberVectorToLetterVector(math.mod(resultVector, l));
     return resultVector;
 }
 
