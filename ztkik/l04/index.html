@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Zaawansowane Techniki Kryptografii i Kryptoanalizy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            margin: 1em 2em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid black;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 30px;
+        }
+
+        .content {
+            margin: 30px 30px;
+        }
+
+        label {
+            display: block;
+            margin-right: 14px;
+            padding: 5px;
+        }
+
+        .main {
+            margin: 0 auto;
+            max-width: 720px;
+        }
+
+        .row {
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 5px auto;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        button {
+            padding: 3px 8px;
+        }
+
+        pre {
+            padding: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 20px;
+        }
+
+        #ex01results, #ex02results, #ex03results {
+            min-height: 145px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 75%;
+            font-size: 20px;
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 1px;
+        }
+
+        td {
+            padding: 2px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <h1>Lecture 4 - RSA i ElGamal's cipher</h1>
+    <hr/>
+    <h2>RSA</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex01p">enter p: </label>
+            <input id="ex01p" type="text" value="5"/>
+        </div>
+        <div class="row">
+            <label for="ex01q">enter q: </label>
+            <input id="ex01q" type="text" value="11"/>
+        </div>
+        <div class="row">
+            <label for="ex01e">enter e: </label>
+            <input id="ex01e" type="text" value="33"/>
+        </div>
+        <div class="row">
+            <label for="ex01text">enter text: </label>
+            <input id="ex01text" type="text" value="TEKST"/>
+        </div>
+        <div class="">
+            <button onclick="rsa_encrypt()">RSA encrypt</button>
+            <button onclick="rsa_decrypt()">RSA decrypt</button>
+            <button onclick="rsa_clear()">Clear</button>
+        </div>
+        <pre id="ex01results"></pre>
+    </div>
+<!--    <h2>RSA - part 2</h2>-->
+    <h2>ElGamal</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex02c1">enter c1: </label>
+            <input id="ex02c1" type="text" value="12"/>
+<!--            <input id="ex02c1" type="text" value="24"/>-->
+        </div>
+        <div class="row">
+            <label for="ex02c2">enter c2: </label>
+            <input id="ex02c2" type="text" value="38"/>
+<!--            <input id="ex02c2" type="text" value="37"/>-->
+        </div>
+        <div class="row">
+            <label for="ex02p">enter p: </label>
+            <input id="ex02p" type="text" value="47"/>
+<!--            <input id="ex02p" type="text" value="53"/>-->
+        </div>
+        <div class="row">
+            <label for="ex02a">enter a: </label>
+            <input id="ex02a" type="text" value="36"/>
+<!--            <input id="ex02a" type="text" value="30"/>-->
+        </div>
+        <div class="row">
+            <label for="ex02g">enter g: </label>
+            <input id="ex02g" type="text" value="15"/>
+<!--            <input id="ex02g" type="text" value="2"/>-->
+        </div>
+        <div class="row">
+            <label for="ex02s">enter s: </label>
+            <input id="ex02s" type="text" value="8"/>
+<!--            <input id="ex02s" type="text" value="8"/>-->
+        </div>
+        <div class="">
+<!--            <button onclick="eg_encrypt()">ElGamal encrypt</button>-->
+            <button onclick="eg_decrypt()">ElGamal decrypt</button>
+            <button onclick="eg_clear()">Clear</button>
+        </div>
+        <pre id="ex02results"></pre>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"
+        integrity="sha512-6SHRAV8GhJ+3WvGPKQNsBpLj7J9QF9JFwH7nPSRLtH/OqFrlXRd54Z+QDgw7xj1f7dV8c50sKhZYr/xGPlMoiw=="
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
