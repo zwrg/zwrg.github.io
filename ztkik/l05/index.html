@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Zaawansowane Techniki Kryptografii i Kryptoanalizy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            margin: 1em 2em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid black;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 30px;
+        }
+
+        .content {
+            margin: 30px 30px;
+        }
+
+        label {
+            display: block;
+            margin-right: 14px;
+            padding: 5px;
+        }
+
+        .main {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        .row {
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 5px auto;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        button {
+            padding: 3px 8px;
+        }
+
+        pre {
+            padding: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 20px;
+        }
+
+        #ex01results, #ex02results {
+            min-height: 90px;
+        }
+
+        #ex02etresults {
+            min-height: 45px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 75%;
+            font-size: 20px;
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 1px;
+        }
+
+        td {
+            padding: 2px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <h1>ord \ Primitive root modulo n</h1>
+    <hr/>
+    <h2>ORDnA</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex01a">enter a: </label>
+            <input id="ex01a" type="text" value="11"/>
+        </div>
+        <div class="row">
+            <label for="ex01n">enter n: </label>
+            <input id="ex01n" type="text" value="12"/>
+        </div>
+        <div class="row">
+            <label for="ex01limit">enter limit: </label>
+            <input id="ex01limit" type="text" value="50"/>
+        </div>
+        <div class="">
+            <button onclick="ord_calculate()">ORD calculate</button>
+            <button onclick="ord_clear()">Clear</button>
+        </div>
+        <pre id="ex01results"></pre>
+    </div>
+    <h2>Euler totient</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex03et">enter n: </label>
+            <input id="ex03et" type="text" value="18"/>
+        </div>
+        <div class="">
+            <button onclick="et_calculate()">ET calculate</button>
+            <button onclick="et_clear()">Clear</button>
+        </div>
+        <pre id="ex03etresults"></pre>
+    </div>
+    <h2>Is primitive root modulo n?</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex02a">enter a: </label>
+            <input id="ex02a" type="text" value="7"/>
+        </div>
+        <div class="row">
+            <label for="ex02n">enter n: </label>
+            <input id="ex02n" type="text" value="18"/>
+        </div>
+        <div class="">
+            <button onclick="prm_calculate()">Is PRDn?</button>
+            <button onclick="prm_clear()">Clear</button>
+        </div>
+        <pre id="ex02results"></pre>
+    </div>
+    <h2>Shanks method</h2>
+    <h3>y == g^x(mod n)</h3>
+    <div class="content">
+        <div class="row">
+            <label for="ex04y">enter y: </label>
+            <input id="ex04y" type="text" value="15"/>
+        </div>
+        <div class="row">
+            <label for="ex04g">enter g: </label>
+            <input id="ex04g" type="text" value="37"/>
+        </div>
+        <div class="row">
+            <label for="ex04n">enter n: </label>
+            <input id="ex04n" type="text" value="123"/>
+        </div>
+        <div class="">
+            <button onclick="shanks_calculate()">Shanks calculate</button>
+            <button onclick="shanks_clear()">Clear</button>
+        </div>
+        <pre id="ex04results"></pre>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"
+        integrity="sha512-6SHRAV8GhJ+3WvGPKQNsBpLj7J9QF9JFwH7nPSRLtH/OqFrlXRd54Z+QDgw7xj1f7dV8c50sKhZYr/xGPlMoiw=="
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
