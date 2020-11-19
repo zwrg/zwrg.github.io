@@ -131,6 +131,7 @@ function letterToNumberArrayHome(letter) {
 function knapsack_encode(exercise = 1) {
     const v = document.querySelector(`#ex0${exercise}v`).value.toLowerCase();
     const i = document.querySelector(`#ex0${exercise}i`).value.toLowerCase();
+    const isHomeArray = document.querySelector(`#isHomeArray`).checked;
     const resultDiv = document.querySelector(`#ex0${exercise}results`);
 
     if (v === '' || i === '') {
@@ -150,11 +151,11 @@ function knapsack_encode(exercise = 1) {
     const min = vArray.reduce((previousValue, currentValue) => previousValue + currentValue);
     const max = 2 * min;
     // const p = Math.floor(Math.random() * (max - min + 1) + min + 1);
-    const p = 80;
+    const p = isHomeArray ? 80 : 61;
     console.info(`min=${min}, max=${max}, p=${p}`)
     resultText += `p=${p}\n`;
     // const b = Math.floor(Math.random() * (min - 1) + 1);
-    const b = 17;
+    const b = isHomeArray ? 17 : 17;
     console.info(`min=${1}, max=${min}, b=${b}`)
     resultText += `b=${b}\n`;
 
@@ -163,7 +164,7 @@ function knapsack_encode(exercise = 1) {
     resultText += `t=[${t.join(',')}]\n`;
 
     let iArrayBits = iArray
-        .map(letterToNumberArrayHome)
+        .map(value => letterToNumber(value, isHomeArray ? 1 : 0))
     console.info(`iArrayBits=[${iArrayBits.join(',')}]`)
     resultText += `iArrayBits=[${iArrayBits.join(',')}]\n`;
 
@@ -187,6 +188,7 @@ function knapsack_encode(exercise = 1) {
 function knapsack_decode(exercise = 2) {
     const V = document.querySelector(`#ex0${exercise}V`).value.toLowerCase();
     const v = document.querySelector(`#ex0${exercise}vec`).value.toLowerCase();
+    const isHomeArray = document.querySelector(`#isHomeArray`).checked;
     const resultDiv = document.querySelector(`#ex0${exercise}results`);
 
     if (V === '' || v === '') {
@@ -203,12 +205,12 @@ function knapsack_decode(exercise = 2) {
     console.info(`vArray=[${vArray.join(',')}]`)
     resultText += `vArray=[${vArray.join(',')}]\n`;
 
-    if (tempV > vArray.reduce((previousValue, currentValue) => previousValue + currentValue)) {
-        console.warn(`Cannot decrypt with that key, ${tempV}>${vArray.reduce((previousValue, currentValue) => previousValue + currentValue)} which is sum of v`);
-        resultText += `Cannot decrypt with that V, ${tempV}>${vArray.reduce((previousValue, currentValue) => previousValue + currentValue)} which is sum of v\n`;
-        resultDiv.textContent = resultText;
-        return;
-    }
+    // if (tempV > vArray.reduce((previousValue, currentValue) => previousValue + currentValue)) {
+    //     console.warn(`Cannot decrypt with that key, ${tempV}>${vArray.reduce((previousValue, currentValue) => previousValue + currentValue)} which is sum of v`);
+    //     resultText += `Cannot decrypt with that V, ${tempV}>${vArray.reduce((previousValue, currentValue) => previousValue + currentValue)} which is sum of v\n`;
+    //     resultDiv.textContent = resultText;
+    //     return;
+    // }
 
     const i = [];
 
@@ -222,14 +224,17 @@ function knapsack_decode(exercise = 2) {
                 i[j] = 0;
             }
         }
+        console.info(`tempV_${j-1}=${tempV}`);
         tempV = tempV - i[j] * vArray[vArray.length - 1 - j];
+        // console.info(`tempV_${j}=${tempV}`);
+
     }
 
     console.info(`i=[${i.join(',')}]`)
     resultText += `i=[${i.join(',')}]\n`;
 
     const iNumber = Number.parseInt(i.join(''), 2);
-    const iLetter = numberToLetterArrayHome(iNumber);
+    const iLetter = numberToLetter(iNumber, isHomeArray ? 1 : 0);
 
     console.info(`i=${i.join('')}=${iNumber}=${iLetter}`);
     resultText += `i=${i.join('')}=${iNumber}=${iLetter}\n`;
