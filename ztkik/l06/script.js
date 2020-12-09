@@ -198,7 +198,25 @@ function knapsack_decode(exercise = 2) {
     let resultText = '';
 
     let tempV = Number.parseInt(V);
-    const vArray = v.replace(' ', '').split(',').filter(value => value !== '').map(value => Number.parseInt(value));
+    let vArray = v.replace(' ', '').split(',').filter(value => value !== '').map(value => Number.parseInt(value));
+
+    console.info(`V=${tempV}`)
+    resultText += `V=${tempV}\n`;
+    console.info(`vArray=[${vArray.join(',')}]`)
+    resultText += `vArray=[${vArray.join(',')}]\n`;
+
+    const min = vArray.reduce((previousValue, currentValue) => previousValue + currentValue);
+    const max = 2 * min;
+
+    const p = isHomeArray ? 80 : 61;
+    console.info(`min=${min}, max=${max}, p=${p}`)
+    resultText += `p=${p}\n`;
+    // const b = Math.floor(Math.random() * (min - 1) + 1);
+    const b = isHomeArray ? 17 : 17;
+    console.info(`min=${1}, max=${min}, b=${b}`)
+    resultText += `b=${b}\n`;
+
+    vArray = vArray.map(value => math.mod(value * b ** (-1), p));
 
     console.info(`V=${tempV}`)
     resultText += `V=${tempV}\n`;
@@ -224,7 +242,7 @@ function knapsack_decode(exercise = 2) {
                 i[j] = 0;
             }
         }
-        console.info(`tempV_${j-1}=${tempV}`);
+        console.info(`tempV_${j - 1}=${tempV}`);
         tempV = tempV - i[j] * vArray[vArray.length - 1 - j];
         // console.info(`tempV_${j}=${tempV}`);
 

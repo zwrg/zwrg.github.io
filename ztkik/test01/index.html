@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Zaawansowane Techniki Kryptografii i Kryptoanalizy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            margin: 1em 2em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid black;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin-left: 10px;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 30px;
+        }
+
+        .content {
+            margin: 30px 30px;
+        }
+
+        label {
+            display: block;
+            margin-right: 14px;
+            padding: 5px;
+        }
+
+        .main {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        .row {
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 5px auto;
+        }
+
+        input,
+        select {
+            padding: 5px;
+        }
+
+        button {
+            padding: 3px 8px;
+        }
+
+        pre {
+            padding: 10px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 20px;
+        }
+
+        #ex01results,
+        #ex02results {
+            min-height: 90px;
+        }
+
+        #ex02etresults {
+            min-height: 45px;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 75%;
+            font-size: 20px;
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 1px;
+        }
+
+        td {
+            padding: 2px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <h1>Test</h1>
+    <hr/>
+    <h2>Number conversion</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex01n">enter k: </label>
+            <input id="ex01n" type="text" value="" placeholder="integer - base10"/>
+        </div>
+        <div class="">
+            <button onclick="ex01_convert()">Decode</button>
+            <button onclick="ex01_clear()">Clear</button>
+        </div>
+        <pre id="ex01results"></pre>
+    </div>
+    <h2>Euclides conversion</h2>
+    <h3>gcd(a, b) = NWD(a, b) = au + bv</h3>
+    <div class="content">
+        <div class="row">
+            <label for="ex02a">enter a: </label>
+            <input id="ex02a" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="row">
+            <label for="ex02b">enter b: </label>
+            <input id="ex02b" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="">
+            <button onclick="ex02_gcd()">Calculate</button>
+            <button onclick="ex02_clear()">Clear</button>
+        </div>
+        <pre id="ex02results"></pre>
+    </div>
+    <h2>Prime check</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex03a">enter a: </label>
+            <input id="ex03a" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="">
+            <button onclick="ex03_prime()">Calculate</button>
+            <button onclick="ex03_clear()">Clear</button>
+        </div>
+        <pre id="ex03results"></pre>
+    </div>
+    <h2>Playfair</h2>
+    <h3>Visit
+        <a href="https://delta.pk.edu.pl/pluginfile.php/58853/mod_resource/content/1/szyfr-playfair.pdf"> delta</a>
+    </h3>
+    <hr>
+    <h2>RSA</h2>
+    <div class="content">
+        <div class="row">
+            <label for="ex04p">enter p: </label>
+            <input id="ex04p" type="text" value="" placeholder="1st prime"/>
+        </div>
+        <div class="row">
+            <label for="ex04q">enter q: </label>
+            <input id="ex04q" type="text" value="" placeholder="2nd prime"/>
+        </div>
+        <div class="row">
+            <label for="ex04e">enter e: </label>
+            <input id="ex04e" type="text" value="" placeholder="random integer"/>
+        </div>
+        <div class="row">
+            <label for="ex04m">enter m: </label>
+            <input id="ex04m" type="text" value="" placeholder="enter message"/>
+        </div>
+        <div class="row">
+            <label for="ex04c">enter c: </label>
+            <input id="ex04c" type="text" value="" placeholder="enter cryptogram"/>
+        </div>
+        <div class="">
+            <button onclick="ex04_rsa_encrypt()">RSA encrypt</button>
+            <button onclick="ex04_clear()">Clear</button>
+        </div>
+        <pre id="ex04results"></pre>
+    </div>
+    <h2>Shanks method</h2>
+    <h3>y == g^x(mod n)</h3>
+    <div class="content">
+        <div class="row">
+            <label for="ex06y">enter y: </label>
+            <input id="ex06y" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="row">
+            <label for="ex06g">enter g: </label>
+            <input id="ex06g" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="row">
+            <label for="ex06n">enter n: </label>
+            <input id="ex06n" type="text" value="" placeholder="integer"/>
+        </div>
+        <div class="">
+            <button onclick="ex06_shanks()">Shanks calculate</button>
+            <button onclick="ex06_clear()">Clear</button>
+        </div>
+        <pre id="ex06results"></pre>
+    </div>
+    <h2>Merkle'a-Hellman cipher - knapsack</h2>
+    <h3>View: <a href="../l06/index.html">knapsack cipher</a></h3>
+    <hr>
+    <h2>Vigener cipher</h2>
+    <div class="content">
+        <div class="row">
+            <div id="ex08table">
+
+            </div>
+        </div>
+        <div class="row">
+            <label for="ex08text">enter m/c: </label>
+            <input id="ex08text" type="text" value="" placeholder="enter text"/>
+
+        </div>
+        <div class="row">
+            <label for="ex08key">enter k: </label>
+            <input id="ex08key" type="text" value="" placeholder="enter key"/>
+
+        </div>
+        <div class="">
+            <button onclick="ex08_vigener(true, 8);">Encode</button>
+            <button onclick="ex08_vigener(false, 8);">Decode</button>
+            <button onclick="clearResults(8)">Clear</button>
+        </div>
+        <pre id="ex08results"></pre>
+    </div>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"
+            integrity="sha512-6SHRAV8GhJ+3WvGPKQNsBpLj7J9QF9JFwH7nPSRLtH/OqFrlXRd54Z+QDgw7xj1f7dV8c50sKhZYr/xGPlMoiw=="
+            crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+</body>
+</html>
